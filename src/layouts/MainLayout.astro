@@ -27,5 +27,8 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <slot />
+    <footer class="mx-auto w-full max-w-5xl px-6 py-8 text-center text-xs text-[var(--ink-muted)] md:px-10">
+      © {new Date().getFullYear()} Archit Dewan. All rights reserved.
+    </footer>
   </body>
 </html>

@@ -49,21 +49,6 @@ const getStackBadgeClass = (stackItem: string) => {
     <p class="mt-2 text-sm text-[var(--ink-muted)]">{data.skillsApplied.join(' • ')}</p>
   </div>
 
-  <dl class="mt-6 grid gap-3 text-sm">
-    <div>
-      <dt class="font-semibold">Problem</dt>
-      <dd class="text-[var(--ink-muted)]">{data.problem}</dd>
-    </div>
-    <div>
-      <dt class="font-semibold">Approach</dt>
-      <dd class="text-[var(--ink-muted)]">{data.approach}</dd>
-    </div>
-    <div>
-      <dt class="font-semibold">Outcome</dt>
-      <dd class="text-[var(--ink-muted)]">{data.outcome}</dd>
-    </div>
-  </dl>
-
   <div class="mt-6 flex flex-wrap gap-4 text-sm">
     <a href={`/projects/${slug}/`} class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Case Study</a>
     <a href={data.repoUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Repository</a>
