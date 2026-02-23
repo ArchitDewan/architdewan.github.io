@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from '../project/ProjectCard.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  heading?: string;
+  description?: string;
+  showAllLink?: boolean;
+  showHeader?: boolean;
+}
+
+const {
+  projects,
+  heading = 'Selected Work',
+  description = 'Each project card focuses on the problem, approach, and measurable outcome.',
+  showAllLink = true,
+  showHeader = true
+} = Astro.props;
+---
+
+<section id="projects" class="section-shell border-t border-[var(--line)] py-14 reveal-up">
+  {showHeader && (
+    <>
+      <p class="eyebrow">Projects</p>
+      <h2 class="section-heading mt-3">{heading}</h2>
+      <p class="mt-4 max-w-2xl text-sm text-[var(--ink-muted)]">{description}</p>
+    </>
+  )}
+
+  <div class={`${showHeader ? 'mt-10' : 'mt-2'} grid gap-6 md:grid-cols-2`}>
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+
+  {showAllLink && (
+    <div class="mt-8">
+      <a href="/projects" class="inline-flex rounded-full border border-[var(--line)] px-5 py-2 text-sm font-medium transition hover:border-[var(--ink)]">View all projects</a>
+    </div>
+  )}
+</section>

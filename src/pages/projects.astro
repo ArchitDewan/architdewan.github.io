@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import ProjectCard from '../components/project/ProjectCard.astro';
+
+const allProjects = (await getCollection('projects')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<MainLayout title="Archit Dewan | All Projects" description="Browse all project case studies and technical work by Archit Dewan.">
+  <main class="section-shell reveal-up pt-6 md:pt-8">
+    <div class="flex items-center justify-between gap-4 border-b border-[var(--line)] pb-4">
+      <h1 class="section-heading">All Projects</h1>
+      <a href="/" class="inline-flex items-center gap-2 text-sm text-[var(--ink-muted)] transition hover:text-[var(--ink)]" aria-label="Back home">
+        <span aria-hidden="true">←</span>
+        <span>Back home</span>
+      </a>
+    </div>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      {allProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </main>
+</MainLayout>

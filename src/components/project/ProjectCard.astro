@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { data, slug } = project;
+const shownStack = data.stack.slice(0, 5);
+const stackOverflow = data.stack.length - shownStack.length;
+
+const getStackBadgeClass = (stackItem: string) => {
+  const normalized = stackItem.toLowerCase();
+
+  if (normalized.includes('react')) return 'border-cyan-400/40 bg-cyan-400/10 text-cyan-200';
+  if (normalized.includes('typescript') || normalized === 'ts') return 'border-blue-400/40 bg-blue-400/10 text-blue-200';
+  if (normalized.includes('javascript') || normalized === 'js') return 'border-amber-400/40 bg-amber-400/10 text-amber-200';
+  if (normalized.includes('node')) return 'border-green-400/40 bg-green-400/10 text-green-200';
+  if (normalized.includes('astro')) return 'border-orange-400/40 bg-orange-400/10 text-orange-200';
+  if (normalized.includes('tailwind')) return 'border-sky-400/40 bg-sky-400/10 text-sky-200';
+  if (normalized.includes('postgres') || normalized.includes('sql')) return 'border-indigo-400/40 bg-indigo-400/10 text-indigo-200';
+  if (normalized.includes('go')) return 'border-teal-400/40 bg-teal-400/10 text-teal-200';
+
+  return 'border-[var(--line)] bg-[var(--surface)] text-[var(--ink)]';
+};
+---
+
+<article class="group rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 transition hover:-translate-y-0.5 hover:border-[var(--ink)]">
+  <div class="flex items-start justify-between gap-4">
+    <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif;">{data.title}</h3>
+    <span class="text-xs uppercase tracking-[0.14em] text-[var(--ink-muted)]">{data.role}</span>
+  </div>
+
+  <p class="mt-3 text-sm leading-relaxed text-[var(--ink-muted)]">{data.summary}</p>
+
+  <div class="mt-4">
+    <p class="text-xs uppercase tracking-[0.14em] text-[var(--ink-muted)]">Stack</p>
+    <div class="mt-2 flex flex-wrap gap-2">
+      {shownStack.map((item) => (
+        <span class={`rounded-full border px-3 py-1 text-xs ${getStackBadgeClass(item)}`}>{item}</span>
+      ))}
+      {stackOverflow > 0 && <span class="rounded-full border border-[var(--line)] px-3 py-1 text-xs">+{stackOverflow}</span>}
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <p class="text-xs uppercase tracking-[0.14em] text-[var(--ink-muted)]">Skills Applied</p>
+    <p class="mt-2 text-sm text-[var(--ink-muted)]">{data.skillsApplied.join(' • ')}</p>
+  </div>
+
+  <dl class="mt-6 grid gap-3 text-sm">
+    <div>
+      <dt class="font-semibold">Problem</dt>
+      <dd class="text-[var(--ink-muted)]">{data.problem}</dd>
+    </div>
+    <div>
+      <dt class="font-semibold">Approach</dt>
+      <dd class="text-[var(--ink-muted)]">{data.approach}</dd>
+    </div>
+    <div>
+      <dt class="font-semibold">Outcome</dt>
+      <dd class="text-[var(--ink-muted)]">{data.outcome}</dd>
+    </div>
+  </dl>
+
+  <div class="mt-6 flex flex-wrap gap-4 text-sm">
+    <a href={`/projects/${slug}/`} class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Case Study</a>
+    <a href={data.repoUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Repository</a>
+    {data.liveUrl && (
+      <a href={data.liveUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Live Demo</a>
+    )}
+  </div>
+</article>

@@ -1,0 +1,22 @@
+---
+interface Props {
+  skills: string[];
+}
+
+const { skills } = Astro.props;
+---
+
+<section id="skills" class="section-shell border-t border-[var(--line)] py-14 reveal-up">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-heading mt-3">Core Capabilities</h2>
+    </div>
+    <p class="max-w-md text-sm text-[var(--ink-muted)]">Concise by design. Project cards below show where each skill is applied.</p>
+  </div>
+  <div class="mt-8 flex flex-wrap gap-3">
+    {skills.map((skill) => (
+      <span class="rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-2 text-sm">{skill}</span>
+    ))}
+  </div>
+</section>
