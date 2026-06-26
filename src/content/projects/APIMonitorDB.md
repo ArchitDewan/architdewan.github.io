@@ -1,7 +1,7 @@
 ---
 title: API Monitor Dashboard
 summary: Built a Go and PostgreSQL dashboard that monitors API health, latency, and failures
-role: 
+role: Backend Developer
 stack:
   - Go
   - PostgreSQL
