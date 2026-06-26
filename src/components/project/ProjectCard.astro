@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getStackBadgeClass } from '../../utils/stackBadgeColor';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -9,21 +10,6 @@ const { project } = Astro.props;
 const { data, slug } = project;
 const shownStack = data.stack.slice(0, 5);
 const stackOverflow = data.stack.length - shownStack.length;
-
-const getStackBadgeClass = (stackItem: string) => {
-  const normalized = stackItem.toLowerCase();
-
-  if (normalized.includes('react')) return 'border-cyan-400/40 bg-cyan-400/10 text-cyan-200';
-  if (normalized.includes('typescript') || normalized === 'ts') return 'border-blue-400/40 bg-blue-400/10 text-blue-200';
-  if (normalized.includes('javascript') || normalized === 'js') return 'border-amber-400/40 bg-amber-400/10 text-amber-200';
-  if (normalized.includes('node')) return 'border-green-400/40 bg-green-400/10 text-green-200';
-  if (normalized.includes('astro')) return 'border-orange-400/40 bg-orange-400/10 text-orange-200';
-  if (normalized.includes('tailwind')) return 'border-sky-400/40 bg-sky-400/10 text-sky-200';
-  if (normalized.includes('postgres') || normalized.includes('sql')) return 'border-indigo-400/40 bg-indigo-400/10 text-indigo-200';
-  if (normalized.includes('go')) return 'border-teal-400/40 bg-teal-400/10 text-teal-200';
-
-  return 'border-[var(--line)] bg-[var(--surface)] text-[var(--ink)]';
-};
 ---
 
 <article class="group rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 transition hover:-translate-y-0.5 hover:border-[var(--ink)]">

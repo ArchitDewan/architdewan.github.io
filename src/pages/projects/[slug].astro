@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
+import { getStackBadgeClass } from '../../utils/stackBadgeColor';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -26,7 +27,7 @@ const { Content } = await render(project);
 
       <div class="mt-6 flex flex-wrap gap-2">
         {project.data.stack.map((item) => (
-          <span class="rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1 text-xs">{item}</span>
+          <span class={`rounded-full border px-3 py-1 text-xs ${getStackBadgeClass(item)}`}>{item}</span>
         ))}
       </div>
 

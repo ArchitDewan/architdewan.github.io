@@ -1,11 +1,12 @@
 ---
 title: Fake News Detector
-summary: Built a machine-learning based classifier that flags potentially misleading news articles with explainable confidence scores.
+summary: Built a ml model that flags potentially misleading news articles 
 role: Full-Stack Developer
 stack:
   - Python
   - FastAPI
   - Scikit-learn
+  
 skillsApplied:
   - ML model training
   - API design
@@ -16,7 +17,7 @@ outcome: Enabled fast credibility checks with clear model confidence indicators,
 repoUrl: https://github.com/ArchitDewan/fake-news-detector
 liveUrl: https://fake-news-detector.example.com
 featured: true
-homePinned: true
+homePinned: false
 date: 2026-02-23
 ---
 
