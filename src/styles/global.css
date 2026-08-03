@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0a0a;
-  --surface: #111111;
-  --ink: #f5f5f5;
-  --ink-muted: #b7b7b7;
-  --line: #2a2a2a;
-  --accent: #dddddd;
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --ink: #171717;
+  --ink-muted: #5f6673;
+  --line: #d8d4ca;
+  --accent: #0f766e;
+  --accent-soft: #dff4ef;
 }
 
 * {
@@ -21,13 +22,14 @@ body {
   padding: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 20% 0%, #181818 0%, #0a0a0a 50%),
-    linear-gradient(180deg, #0a0a0a 0%, #060606 100%);
+    radial-gradient(circle at 18% 0%, #dff4ef 0%, rgba(223, 244, 239, 0) 38%),
+    radial-gradient(circle at 86% 12%, #e8eefc 0%, rgba(232, 238, 252, 0) 32%),
+    linear-gradient(180deg, #fbfaf7 0%, #f6f3ee 100%);
   font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 html {
-  background-color: #060606;
+  background-color: #f6f3ee;
   overscroll-behavior-y: none;
 }
 

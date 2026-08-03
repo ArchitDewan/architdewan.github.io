@@ -18,7 +18,7 @@ const { Content } = await render(project);
 
 <MainLayout title={`${project.data.title} | Project Case Study`} description={project.data.summary}>
   <main class="section-shell py-20">
-    <a href="/projects" class="text-sm underline decoration-[var(--line)] underline-offset-4">Back to all projects</a>
+    <a href="/projects" class="text-sm underline decoration-[var(--accent)] underline-offset-4">Back to all projects</a>
 
     <header class="mt-8 border-b border-[var(--line)] pb-8">
       <p class="eyebrow">Case Study</p>
@@ -32,14 +32,14 @@ const { Content } = await render(project);
       </div>
 
       <div class="mt-6 flex flex-wrap gap-4 text-sm">
-        <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4">Repository</a>
+        <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--accent)] underline-offset-4">Repository</a>
         {project.data.liveUrl && (
-          <a href={project.data.liveUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4">Live Demo</a>
+          <a href={project.data.liveUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--accent)] underline-offset-4">Live Demo</a>
         )}
       </div>
     </header>
 
-    <section class="mt-10 grid gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 text-sm md:grid-cols-3">
+    <section class="mt-10 grid gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[0_16px_40px_rgba(23,23,23,0.06)] text-sm md:grid-cols-3">
       <div>
         <h2 class="font-semibold">Problem</h2>
         <p class="mt-2 text-[var(--ink-muted)]">{project.data.problem}</p>

@@ -12,7 +12,7 @@ const shownStack = data.stack.slice(0, 5);
 const stackOverflow = data.stack.length - shownStack.length;
 ---
 
-<article class="group rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 transition hover:-translate-y-0.5 hover:border-[var(--ink)]">
+<article class="group flex h-full flex-col rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[0_18px_45px_rgba(23,23,23,0.07)] transition hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]">
   <div class="flex items-start justify-between gap-4">
     <h3 class="text-xl font-semibold" style="font-family: 'Space Grotesk', sans-serif;">{data.title}</h3>
     <span class="text-xs uppercase tracking-[0.14em] text-[var(--ink-muted)]">{data.role}</span>
@@ -30,16 +30,18 @@ const stackOverflow = data.stack.length - shownStack.length;
     </div>
   </div>
 
-  <div class="mt-4">
+  <div class="mt-4 flex-1">
     <p class="text-xs uppercase tracking-[0.14em] text-[var(--ink-muted)]">Skills Applied</p>
     <p class="mt-2 text-sm text-[var(--ink-muted)]">{data.skillsApplied.join(' • ')}</p>
   </div>
 
   <div class="mt-6 flex flex-wrap gap-4 text-sm">
-    <a href={`/projects/${slug}/`} class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Case Study</a>
-    <a href={data.repoUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Repository</a>
+    {data.caseStudy && (
+      <a href={`/projects/${slug}/`} class="underline decoration-[var(--accent)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Case Study</a>
+    )}
+    <a href={data.repoUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--accent)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Repository</a>
     {data.liveUrl && (
-      <a href={data.liveUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--line)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Live Demo</a>
+      <a href={data.liveUrl} target="_blank" rel="noreferrer" class="underline decoration-[var(--accent)] underline-offset-4 transition group-hover:decoration-[var(--ink)]">Live Demo</a>
     )}
   </div>
 </article>

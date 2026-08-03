@@ -1,28 +1,28 @@
 const AUTO_PALETTE = [
-  'border-cyan-400/40 bg-cyan-400/10 text-cyan-200',
-  'border-blue-400/40 bg-blue-400/10 text-blue-200',
-  'border-amber-400/40 bg-amber-400/10 text-amber-200',
-  'border-green-400/40 bg-green-400/10 text-green-200',
-  'border-orange-400/40 bg-orange-400/10 text-orange-200',
-  'border-sky-400/40 bg-sky-400/10 text-sky-200',
-  'border-indigo-400/40 bg-indigo-400/10 text-indigo-200',
-  'border-teal-400/40 bg-teal-400/10 text-teal-200',
-  'border-pink-400/40 bg-pink-400/10 text-pink-200',
-  'border-lime-400/40 bg-lime-400/10 text-lime-200'
+  'border-cyan-200 bg-cyan-50 text-cyan-700',
+  'border-blue-200 bg-blue-50 text-blue-700',
+  'border-amber-200 bg-amber-50 text-amber-700',
+  'border-emerald-200 bg-emerald-50 text-emerald-700',
+  'border-orange-200 bg-orange-50 text-orange-700',
+  'border-sky-200 bg-sky-50 text-sky-700',
+  'border-indigo-200 bg-indigo-50 text-indigo-700',
+  'border-teal-200 bg-teal-50 text-teal-700',
+  'border-pink-200 bg-pink-50 text-pink-700',
+  'border-lime-200 bg-lime-50 text-lime-700'
 ] as const;
 
 const CURATED_MATCHES: Array<[matcher: string, classes: string]> = [
-  ['react', 'border-cyan-400/40 bg-cyan-400/10 text-cyan-200'],
-  ['typescript', 'border-blue-400/40 bg-blue-400/10 text-blue-200'],
-  ['ts', 'border-blue-400/40 bg-blue-400/10 text-blue-200'],
-  ['javascript', 'border-amber-400/40 bg-amber-400/10 text-amber-200'],
-  ['js', 'border-amber-400/40 bg-amber-400/10 text-amber-200'],
-  ['node', 'border-green-400/40 bg-green-400/10 text-green-200'],
-  ['astro', 'border-orange-400/40 bg-orange-400/10 text-orange-200'],
-  ['tailwind', 'border-sky-400/40 bg-sky-400/10 text-sky-200'],
-  ['postgres', 'border-indigo-400/40 bg-indigo-400/10 text-indigo-200'],
-  ['sql', 'border-indigo-400/40 bg-indigo-400/10 text-indigo-200'],
-  ['go', 'border-teal-400/40 bg-teal-400/10 text-teal-200']
+  ['react', 'border-cyan-200 bg-cyan-50 text-cyan-700'],
+  ['typescript', 'border-blue-200 bg-blue-50 text-blue-700'],
+  ['ts', 'border-blue-200 bg-blue-50 text-blue-700'],
+  ['javascript', 'border-amber-200 bg-amber-50 text-amber-700'],
+  ['js', 'border-amber-200 bg-amber-50 text-amber-700'],
+  ['node', 'border-emerald-200 bg-emerald-50 text-emerald-700'],
+  ['astro', 'border-orange-200 bg-orange-50 text-orange-700'],
+  ['tailwind', 'border-sky-200 bg-sky-50 text-sky-700'],
+  ['postgres', 'border-indigo-200 bg-indigo-50 text-indigo-700'],
+  ['sql', 'border-indigo-200 bg-indigo-50 text-indigo-700'],
+  ['go', 'border-teal-200 bg-teal-50 text-teal-700']
 ];
 
 const DEFAULT_BADGE_CLASS = 'border-[var(--line)] bg-[var(--surface)] text-[var(--ink)]';
