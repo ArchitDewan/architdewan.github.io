@@ -19,7 +19,7 @@ problem: Developers need a simple way to monitor API uptime, response times, and
 approach: Built a Go web app that stores monitored endpoints in PostgreSQL, runs manual and scheduled health checks, records response history, and displays status metrics in a dashboard.
 outcome: Enabled quick visibility into endpoint reliability with recent check results, latency trends, failure tracking, and clear health status indicators.
 repoUrl: https://github.com/ArchitDewan/APIMonitorDB
-liveUrl: http://apimonitor.ddns.net:8080
+liveUrl: https://monitor.architdewan.dev
 featured: true
 homePinned: true
 date: 2026-6-16
