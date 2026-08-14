@@ -18,7 +18,7 @@ outcome: Delivers automatic per-file PR summaries on open, sync, and reopen even
 repoUrl: https://github.com/ArchitDewan/GitPRSummarizer
 caseStudy: false
 featured: true
-homePinned: true
+homePinned: false
 date: 2026-08-13
 ---
 
