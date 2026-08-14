@@ -4,7 +4,6 @@ summary: Built a ml model that flags potentially misleading news articles
 role: Project
 stack:
   - Python
-  - FastAPI
   - Scikit-learn
   
 skillsApplied:
