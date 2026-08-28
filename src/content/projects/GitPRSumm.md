@@ -20,6 +20,7 @@ caseStudy: false
 featured: true
 homePinned: false
 date: 2026-08-13
+visualVariant: pr-review
 ---
 
 ## Overview

@@ -2,11 +2,21 @@
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="404 | Not Found" description="Page not found.">
-  <main class="section-shell py-24">
-    <p class="eyebrow">404</p>
-    <h1 class="mt-4 text-4xl font-semibold" style="font-family: 'Space Grotesk', sans-serif;">Page not found.</h1>
-    <p class="mt-4 text-[var(--ink-muted)]">The page you requested does not exist.</p>
-    <a href="/" class="mt-8 inline-block rounded-full border border-[var(--line)] px-5 py-2 text-sm">Return home</a>
+<MainLayout title="404 | Archit Dewan" description="The requested route could not be found.">
+  <main class="content-shell error-page">
+    <div class="panel error-panel reveal is-visible">
+      <div class="panel-header"><span class="panel-tab">route.error</span><span>exit code 404</span></div>
+      <div class="error-body mono">
+        <p><span>&gt;</span> resolve requested path</p>
+        <p class="error-output">Error: route not found</p>
+        <h1>404</h1>
+        <p class="muted">This file does not exist in the current workspace.</p>
+        <a class="button button-primary" href="/">Return to workspace →</a>
+      </div>
+    </div>
   </main>
 </MainLayout>
+
+<style>
+  .error-page{display:grid;min-height:calc(100svh - 180px);place-items:center}.error-panel{width:min(700px,100%)}.error-body{padding:clamp(30px,7vw,70px);text-align:center}.error-body>p:first-child{text-align:left;color:var(--ink-soft)}.error-body>p:first-child span{color:var(--cyan)}.error-output{text-align:left;color:var(--red)}h1{margin:44px 0 10px;color:var(--cyan);font:600 clamp(92px,20vw,190px)/.75 'Space Grotesk',sans-serif;letter-spacing:-.08em}.muted{margin:28px 0;color:var(--ink-muted);font-size:12px}
+</style>

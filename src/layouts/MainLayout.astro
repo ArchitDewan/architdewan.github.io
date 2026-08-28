@@ -1,12 +1,17 @@
 ---
 import '../styles/global.css';
 
-interface Props {
-  title: string;
-  description: string;
-}
-
+interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
+const year = new Date().getFullYear();
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const navItems = [
+  { id: 'home', label: 'home', glyph: '~' },
+  { id: 'projects', label: 'work', glyph: '01' },
+  { id: 'skills', label: 'skills', glyph: '02' },
+  { id: 'education', label: 'edu', glyph: '03' },
+  { id: 'contact', label: 'contact', glyph: '04' }
+];
 ---
 
 <!doctype html>
@@ -14,23 +19,174 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#282c34" />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Archit Dewan" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="flex min-h-[100svh] flex-col">
-    <div class="flex-1">
-      <slot />
-    </div>
-    <footer class="mx-auto w-full max-w-5xl px-6 py-8 text-center text-xs text-[var(--ink-muted)] md:px-10">
-      © {new Date().getFullYear()} Archit Dewan. All rights reserved.
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="topbar">
+      <a class="brand-mark" href="/" aria-label="Archit Dewan home">AD</a>
+      <div class="topbar-path" aria-label="Current workspace path"><span>~/portfolio/</span><strong data-active-path>home.astro</strong></div>
+      <div class="topbar-spacer"></div>
+      <button class="command-trigger" type="button" data-command-open aria-label="Open command palette"><span>Search workspace</span><kbd>⌘ K</kbd></button>
+    </header>
+
+    <nav class="rail" aria-label="Primary navigation">
+      {navItems.map((item) => (
+        <a class="rail-link" href={`/#${item.id}`} data-nav-section={item.id}><span aria-hidden="true">{item.glyph}</span><span>{item.label}</span></a>
+      ))}
+    </nav>
+
+    <div class="workspace-content" id="main-content"><slot /></div>
+
+    <footer class="statusbar">
+      <span>Astro · TypeScript · static</span>
+      <span>© {year} Archit Dewan</span>
     </footer>
+
+    <div class="command-overlay" data-command-overlay hidden>
+      <div class="command-dialog" role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="command-input-wrap"><span class="command-prompt" aria-hidden="true">&gt;</span><input class="command-input" data-command-input type="text" placeholder="Type a command or search…" autocomplete="off" /></div>
+        <div class="command-list" data-command-list role="listbox"></div>
+      </div>
+    </div>
+    <div class="sr-only" data-live-status aria-live="polite"></div>
+
+    <script is:inline>
+      (() => {
+        const overlay = document.querySelector('[data-command-overlay]');
+        const input = document.querySelector('[data-command-input]');
+        const list = document.querySelector('[data-command-list]');
+        const liveStatus = document.querySelector('[data-live-status]');
+        let activeIndex = 0;
+        let lastFocused = null;
+
+        const goTo = (id) => {
+          const target = document.getElementById(id);
+          if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+          else window.location.href = `/#${id}`;
+        };
+        const copyEmail = async () => {
+          const email = 'architdewan2006@gmail.com';
+          try { await navigator.clipboard.writeText(email); if (liveStatus) liveStatus.textContent = 'Email address copied'; }
+          catch { window.location.href = `mailto:${email}`; }
+        };
+        const commands = [
+          { label: 'Go to home', meta: 'navigation', keywords: 'intro hero home', action: () => goTo('home') },
+          { label: 'View featured projects', meta: 'navigation', keywords: 'work projects', action: () => goTo('projects') },
+          { label: 'Browse skills', meta: 'navigation', keywords: 'stack technologies', action: () => goTo('skills') },
+          { label: 'View education', meta: 'navigation', keywords: 'mcmaster school', action: () => goTo('education') },
+          { label: 'Get in touch', meta: 'navigation', keywords: 'contact email', action: () => goTo('contact') },
+          { label: 'Open all projects', meta: '/projects', keywords: 'archive all', action: () => window.location.href = '/projects' },
+          { label: 'Open GitHub', meta: 'external', keywords: 'code repo', action: () => window.open('https://github.com/ArchitDewan', '_blank', 'noopener,noreferrer') },
+          { label: 'Open LinkedIn', meta: 'external', keywords: 'social profile', action: () => window.open('https://www.linkedin.com/in/architdewan/', '_blank', 'noopener,noreferrer') },
+          { label: 'Copy email address', meta: 'action', keywords: 'contact mail', action: copyEmail }
+        ];
+        const filteredCommands = () => {
+          const query = input?.value.trim().toLowerCase() || '';
+          return commands.filter((command) => `${command.label} ${command.meta} ${command.keywords}`.toLowerCase().includes(query));
+        };
+        const setActiveCommand = (index) => {
+          activeIndex = index;
+          list?.querySelectorAll('.command-item').forEach((item, itemIndex) => {
+            const isActive = itemIndex === activeIndex;
+            item.dataset.active = String(isActive);
+            item.setAttribute('aria-selected', String(isActive));
+          });
+        };
+        const renderCommands = () => {
+          if (!list) return;
+          const filtered = filteredCommands();
+          activeIndex = Math.min(activeIndex, Math.max(0, filtered.length - 1));
+          list.innerHTML = '';
+          filtered.forEach((command, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'command-item';
+            button.dataset.active = String(index === activeIndex);
+            button.setAttribute('role', 'option');
+            button.setAttribute('aria-selected', String(index === activeIndex));
+            const name = document.createElement('span'); name.textContent = command.label;
+            const meta = document.createElement('small'); meta.textContent = command.meta;
+            button.append(name, meta);
+            button.addEventListener('mouseenter', () => setActiveCommand(index));
+            button.addEventListener('focus', () => setActiveCommand(index));
+            button.addEventListener('click', () => runCommand(command));
+            list.appendChild(button);
+          });
+          if (!filtered.length) list.innerHTML = '<p class="mono" style="margin:0;padding:18px;color:var(--ink-muted);font-size:12px">No matching commands.</p>';
+        };
+        const openPalette = () => {
+          if (!overlay || !input) return;
+          lastFocused = document.activeElement;
+          overlay.hidden = false;
+          document.body.style.overflow = 'hidden';
+          input.value = '';
+          activeIndex = 0;
+          renderCommands();
+          requestAnimationFrame(() => input.focus());
+        };
+        const closePalette = () => {
+          if (!overlay) return;
+          overlay.hidden = true;
+          document.body.style.overflow = '';
+          if (lastFocused instanceof HTMLElement) lastFocused.focus();
+        };
+        const runCommand = (command) => { closePalette(); command.action(); };
+
+        document.querySelectorAll('[data-command-open]').forEach((button) => button.addEventListener('click', openPalette));
+        input?.addEventListener('input', () => { activeIndex = 0; renderCommands(); });
+        overlay?.addEventListener('mousedown', (event) => { if (event.target === overlay) closePalette(); });
+        document.addEventListener('keydown', (event) => {
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); overlay?.hidden ? openPalette() : closePalette(); return; }
+          if (overlay?.hidden) return;
+          const filtered = filteredCommands();
+          if (event.key === 'Escape') closePalette();
+          if (event.key === 'ArrowDown') { event.preventDefault(); activeIndex = (activeIndex + 1) % Math.max(1, filtered.length); renderCommands(); }
+          if (event.key === 'ArrowUp') { event.preventDefault(); activeIndex = (activeIndex - 1 + Math.max(1, filtered.length)) % Math.max(1, filtered.length); renderCommands(); }
+          if (event.key === 'Enter' && filtered[activeIndex]) { event.preventDefault(); runCommand(filtered[activeIndex]); }
+          if (event.key === 'Tab') {
+            const focusable = [input, ...document.querySelectorAll('.command-item')].filter(Boolean);
+            const current = focusable.indexOf(document.activeElement);
+            const next = event.shiftKey ? (current - 1 + focusable.length) % focusable.length : (current + 1) % focusable.length;
+            event.preventDefault();
+            focusable[next]?.focus();
+          }
+        });
+
+        const sections = [...document.querySelectorAll('main section[id]')];
+        const navLinks = [...document.querySelectorAll('[data-nav-section]')];
+        const activePath = document.querySelector('[data-active-path]');
+        if (sections.length) {
+          const observer = new IntersectionObserver((entries) => {
+            const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (!visible) return;
+            navLinks.forEach((link) => link.setAttribute('aria-current', String(link.dataset.navSection === visible.target.id)));
+            if (activePath) activePath.textContent = `${visible.target.id}.astro`;
+          }, { rootMargin: '-25% 0px -60% 0px', threshold: [0, 0.15, 0.5] });
+          sections.forEach((section) => observer.observe(section));
+        }
+
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+            if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+          }), { threshold: 0.08 });
+          reveals.forEach((element) => revealObserver.observe(element));
+        } else reveals.forEach((element) => element.classList.add('is-visible'));
+      })();
+    </script>
   </body>
 </html>

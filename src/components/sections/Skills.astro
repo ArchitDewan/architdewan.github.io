@@ -1,22 +1,27 @@
 ---
-interface Props {
-  skills: string[];
-}
-
-const { skills } = Astro.props;
+const groups = [
+  { title: 'Languages', index: '01', skills: ['Go', 'Python', 'Java', 'SQL', 'HTML/CSS', 'Bash'] },
+  { title: 'Databases', index: '02', skills: ['PostgreSQL', 'SQLAlchemy'] },
+  { title: 'Developer Tools', index: '03', skills: ['Git', 'GitHub', 'VS Code', 'Cursor', 'Codex', 'Docker', 'Postman', 'DataGrip'] },
+  { title: 'Cloud and Systems', index: '04', skills: ['Unix/Linux', 'Oracle Cloud', 'REST APIs', 'Webhooks', 'CI/CD'] }
+];
 ---
 
-<section id="skills" class="section-shell border-t border-[var(--line)] py-14 reveal-up">
-  <div class="flex flex-wrap items-end justify-between gap-4">
-    <div>
-      <p class="eyebrow">Skills</p>
-      <h2 class="section-heading mt-3">Core Capabilities</h2>
-    </div>
-    <p class="max-w-md text-sm text-[var(--ink-muted)]">Concise by design. Project cards below show where each skill is applied.</p>
-  </div>
-  <div class="mt-8 flex flex-wrap gap-3">
-    {skills.map((skill) => (
-      <span class="rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-2 shadow-[0_8px_22px_rgba(23,23,23,0.05)] text-sm">{skill}</span>
+<section id="skills" class="section-block reveal">
+  <p class="section-kicker">02 / skills</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    {groups.map((group) => (
+      <article class="skill-group panel">
+        <div class="panel-header"><span class="panel-tab">{group.title}</span><span>{group.index}</span></div>
+        <ul>{group.skills.map((skill) => <li><span aria-hidden="true">›</span>{skill}</li>)}</ul>
+      </article>
     ))}
   </div>
 </section>
+
+<style>
+  .skills-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}.skill-group{box-shadow:none}
+  ul{display:grid;gap:11px;margin:0;padding:20px;list-style:none}li{display:flex;gap:9px;color:var(--ink-muted);font-size:12px}li span{color:var(--cyan);font-family:'JetBrains Mono',monospace}
+  @media(max-width:960px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.skills-grid{grid-template-columns:1fr}}
+</style>

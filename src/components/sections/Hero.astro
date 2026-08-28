@@ -1,92 +1,47 @@
-<section class="relative reveal-up min-h-[100svh]">
-  <div class="section-shell flex min-h-[100svh] items-center py-8 md:py-12">
-    <div class="w-full max-w-3xl">
-    <p class="eyebrow">Archit Dewan</p>
-    <h1 class="mt-4 text-5xl font-semibold leading-tight md:text-7xl" style="font-family: 'Space Grotesk', sans-serif;">
-      Archit Dewan
-    </h1>
-    <p class="mt-6 max-w-2xl text-base leading-relaxed text-[var(--ink-muted)] md:text-lg">CS & Math @ McMaster University. </p>
-    <div class="mt-8 flex flex-wrap gap-4">
-      <a href="/projects" class="rounded-full border border-[var(--line)] px-5 py-2 text-sm font-medium transition hover:border-[var(--accent)] hover:text-[var(--accent)]">View All Projects</a>
+<section id="home" class="hero section-block">
+  <div class="hero-grid">
+    <div class="hero-copy reveal is-visible">
+      <h1>Archit<br /><span>Dewan</span></h1>
+      <p class="hero-lede">Computer Science &amp; Math student at McMaster University.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#projects">View projects <span aria-hidden="true">↓</span></a>
+        <button class="button" type="button" data-command-open>Open command palette <kbd>⌘K</kbd></button>
+      </div>
     </div>
-    <div class="mt-7 flex items-center gap-3">
-      <nav aria-label="Contact links" class="flex items-center gap-3">
-      <a
-        href="https://github.com/ArchitDewan"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="GitHub"
-        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-      >
-        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6a3.1 3.1 0 0 0-1.3-1.7c-1.1-.8.1-.8.1-.8a2.5 2.5 0 0 1 1.8 1.2 2.6 2.6 0 0 0 3.5 1 2.7 2.7 0 0 1 .8-1.7c-2.7-.3-5.5-1.3-5.5-6A4.7 4.7 0 0 1 5.5 8a4.4 4.4 0 0 1 .1-3.2s1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.4 4.4 0 0 1 .1 3.2 4.7 4.7 0 0 1 1.2 3.2c0 4.8-2.8 5.7-5.5 6a3 3 0 0 1 .9 2.3v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"></path>
-        </svg>
-      </a>
-      <a
-        href="https://www.linkedin.com/in/architdewan/"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="LinkedIn"
-        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-      >
-        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M20.4 20.5h-3.6v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8H9.1V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.7v6.1ZM5 7.5a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM6.8 20.5H3.2V9h3.6v11.5Z"></path>
-        </svg>
-      </a>
-      <button
-        type="button"
-        data-copy-email-hero
-        data-email="architdewan2006@gmail.com"
-        aria-label="Copy email address"
-        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-      >
-        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M20 5H4a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V7c0-1.1-.9-2-2-2Zm0 2-8 5L4 7h16Zm0 10H4V9.2l8 5 8-5V17Z"></path>
-        </svg>
-      </button>
-      </nav>
-      <span data-copy-status-hero class="text-xs text-[var(--ink-muted)]" aria-live="polite"></span>
-    </div>
+
+    <div class="terminal panel reveal is-visible">
+      <div class="panel-header"><span class="panel-tab session-tab">session.log</span><span>read only</span></div>
+      <div class="terminal-body mono">
+        <div class="terminal-line"><span class="prompt">archit@portfolio ~ %</span><span>whoami</span></div>
+        <div class="terminal-output"><span class="key">name</span><span>Archit Dewan</span></div>
+        <div class="terminal-output"><span class="key">degree</span><span>Honours BSc · Computer Science &amp; Math</span></div>
+        <div class="terminal-output"><span class="key">grad</span><span>2028</span></div>
+        <div class="terminal-line terminal-last"><span class="prompt">archit@portfolio ~ %</span><span class="caret" aria-hidden="true"></span></div>
+      </div>
+      <div class="terminal-footer mono"><span class="status-online">ready</span><span>utf-8 · zsh</span></div>
     </div>
   </div>
-  <button
-    type="button"
-    data-scroll-projects
-    class="scroll-cue absolute bottom-8 right-8 hidden items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--ink-muted)] transition hover:text-[var(--ink)] md:flex"
-    aria-label="Scroll to projects"
-  >
-    <span>Scroll</span>
-    <span aria-hidden="true">↓</span>
-  </button>
 </section>
 
-<script is:inline>
-  const copyBtn = document.querySelector('[data-copy-email-hero]');
-  const status = document.querySelector('[data-copy-status-hero]');
-  const scrollBtn = document.querySelector('[data-scroll-projects]');
-  const projectsSection = document.querySelector('#projects');
-
-  copyBtn?.addEventListener('click', async () => {
-    const email = copyBtn.getAttribute('data-email');
-    if (!email) return;
-
-    try {
-      await navigator.clipboard.writeText(email);
-      if (status) status.textContent = 'Copied email';
-    } catch {
-      if (status) status.textContent = 'Copy failed';
-    }
-
-    setTimeout(() => {
-      if (status) status.textContent = '';
-    }, 1500);
-  });
-
-  scrollBtn?.addEventListener('click', () => {
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-    }
-  });
-</script>
+<style>
+  .hero { display:grid; min-height:min(680px,calc(100svh - 100px)); align-items:center; padding-top:34px; }
+  .hero-grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr); align-items:center; gap:clamp(40px,7vw,88px); }
+  .hero-grid > * { min-width:0; }
+  h1 { margin:22px 0 0; font:600 clamp(64px,9vw,124px)/.78 'Space Grotesk',sans-serif; letter-spacing:-.07em; }
+  h1 span { color:var(--cyan); }
+  .hero-lede { max-width:570px; margin:30px 0 0; color:var(--ink-muted); font-size:clamp(16px,2vw,20px); line-height:1.65; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+  kbd { color:var(--ink-muted); font-size:9px; }
+  .terminal { transform:rotate(1deg); }
+  .terminal-body { min-height:258px; padding:28px 24px; color:var(--ink-soft); background:radial-gradient(circle at 80% 0,rgba(138,190,183,.08),transparent 55%),#181b20; font-size:12px; }
+  .terminal-line { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
+  .prompt,.key { color:var(--cyan); }
+  .terminal-output { display:grid; grid-template-columns:70px minmax(0,1fr); gap:18px; margin:12px 0; }
+  .terminal-output span:last-child { overflow-wrap:anywhere; }
+  .terminal-last { margin-top:32px; margin-bottom:0; }
+  .caret { width:8px; height:16px; background:var(--cyan); animation:blink 1s steps(1) infinite; }
+  .terminal-footer { display:flex; justify-content:space-between; border-top:1px solid var(--line); padding:7px 13px; color:var(--ink-muted); background:var(--surface-raised); font-size:9px; }
+  @keyframes blink { 50% { opacity:0; } }
+  @media(max-width:900px){.hero{min-height:auto}.hero-grid{width:100%;max-width:100%;grid-template-columns:minmax(0,1fr)}.terminal{width:100%;max-width:100%;transform:none}.hero-copy{padding-top:22px}.hero-lede{overflow-wrap:anywhere}}
+  @media(max-width:520px){h1{font-size:clamp(58px,22vw,86px)}.hero-actions{flex-direction:column;align-items:stretch}.terminal-body{padding:22px 16px;font-size:10px}.terminal-output{grid-template-columns:58px 1fr}}
+</style>

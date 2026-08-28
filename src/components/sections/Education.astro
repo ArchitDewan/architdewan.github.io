@@ -1,0 +1,29 @@
+<section id="education" class="section-block reveal">
+  <p class="section-kicker">03 / education</p>
+  <div class="education-panel panel">
+    <div class="panel-header"><span class="panel-tab">education.md</span><span>1 entry</span></div>
+    <div class="education-body">
+      <div class="school-mark">
+        <img src="/mcmaster-logo.png" alt="McMaster University shield" width="345" height="182" />
+      </div>
+      <div class="education-details">
+        <p class="mono path">~/education/mcmaster</p>
+        <p class="school-name">McMaster University</p>
+        <h2>Honours BSc in Computer Science &amp; Math</h2>
+      </div>
+      <div class="graduation mono">
+        <span>expected grad</span>
+        <strong>2028</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .education-panel{margin-top:34px}.education-body{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:26px;align-items:center;padding:28px}
+  .school-mark{position:relative;width:82px;height:96px;overflow:hidden;flex:none}
+  .school-mark img{position:absolute;width:300px;height:auto;max-width:none;top:-62px;left:-217px}
+  .path{margin:0 0 4px;color:var(--cyan);font-size:9px}.school-name{margin:0 0 5px;color:var(--ink-soft);font-size:15px;font-weight:600}h2{max-width:760px;margin:0;font:600 clamp(25px,3.3vw,34px)/1.15 'Space Grotesk',sans-serif;letter-spacing:-.025em}
+  .graduation{display:flex;min-width:112px;flex-direction:column;gap:4px;border-left:1px solid var(--line);padding:8px 0 8px 22px}.graduation span{color:var(--ink-muted);font-size:8px;letter-spacing:.08em;text-transform:uppercase}.graduation strong{color:var(--cyan);font-size:22px;font-weight:500;line-height:1}
+  @media(max-width:680px){.education-body{grid-template-columns:auto minmax(0,1fr);gap:18px;padding:20px}.school-mark{width:68px;height:80px}.school-mark img{width:250px;top:-52px;left:-181px}.graduation{grid-column:2;min-width:0;border-left:0;border-top:1px solid var(--line);padding:14px 0 0}h2{font-size:clamp(20px,6vw,27px)}}
+</style>

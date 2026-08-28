@@ -4,20 +4,64 @@ import MainLayout from '../layouts/MainLayout.astro';
 import ProjectCard from '../components/project/ProjectCard.astro';
 
 const allProjects = (await getCollection('projects')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const stacks = [...new Set(allProjects.flatMap((project) => project.data.stack))].sort();
 ---
 
-<MainLayout title="Archit Dewan | All Projects" description="Browse all project case studies and technical work by Archit Dewan.">
-  <main class="section-shell reveal-up pt-6 md:pt-8">
-    <div class="flex items-center justify-between gap-4 border-b border-[var(--line)] pb-4">
-      <h1 class="section-heading">All Projects</h1>
-      <a href="/" class="inline-flex items-center gap-2 text-sm text-[var(--ink-muted)] transition hover:text-[var(--ink)]" aria-label="Back home">
-        <span aria-hidden="true">←</span>
-        <span>Back home</span>
-      </a>
+<MainLayout title="Archit Dewan | Project Archive" description="Browse software projects by Archit Dewan across backend systems, monitoring, automation, and applied AI.">
+  <main class="content-shell archive">
+    <header class="archive-header reveal is-visible">
+      <div><p class="section-kicker">project archive</p><h1 class="section-title">Projects</h1><p class="section-intro">Search by project name, capability, or technology.</p></div>
+      <a class="button" href="/">← Return home</a>
+    </header>
+
+    <div class="filter-panel panel reveal is-visible">
+      <label class="filter-input"><span aria-hidden="true">&gt;</span><span class="sr-only">Search projects</span><input type="search" data-project-search placeholder="search projects…" /></label>
+      <div class="filter-tags" aria-label="Filter by technology">
+        <button class="tag" type="button" data-filter="all" aria-pressed="true">all</button>
+        {stacks.map((stack) => <button class="tag" type="button" data-filter={stack.toLowerCase()} aria-pressed="false">{stack}</button>)}
+      </div>
     </div>
 
-    <div class="mt-8 grid gap-6 md:grid-cols-2">
-      {allProjects.map((project) => <ProjectCard project={project} />)}
-    </div>
+    <p class="result-count mono" data-result-count>{allProjects.length} projects indexed</p>
+    <section class="archive-grid" aria-label="Projects">{allProjects.map((project, index) => <ProjectCard project={project} index={index} />)}</section>
+    <p class="empty-state panel mono" data-empty-state hidden>No projects match this query.</p>
   </main>
 </MainLayout>
+
+<script is:inline>
+  (() => {
+    const search = document.querySelector('[data-project-search]');
+    const cards = [...document.querySelectorAll('[data-project-card]')];
+    const buttons = [...document.querySelectorAll('[data-filter]')];
+    const count = document.querySelector('[data-result-count]');
+    const empty = document.querySelector('[data-empty-state]');
+    let activeFilter = 'all';
+    const applyFilters = () => {
+      const query = search?.value.trim().toLowerCase() || '';
+      let shown = 0;
+      cards.forEach((card) => {
+        const text = card.textContent.toLowerCase();
+        const stack = card.dataset.stack || '';
+        const visible = (!query || text.includes(query)) && (activeFilter === 'all' || stack.includes(activeFilter));
+        card.hidden = !visible;
+        if (visible) shown += 1;
+      });
+      if (count) count.textContent = `${shown} project${shown === 1 ? '' : 's'} indexed`;
+      if (empty) empty.hidden = shown !== 0;
+    };
+    search?.addEventListener('input', applyFilters);
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      applyFilters();
+    }));
+  })();
+</script>
+
+<style>
+  .archive{padding-block:44px 80px}.archive-header{display:flex;align-items:end;justify-content:space-between;gap:30px}.filter-panel{margin-top:42px;padding:18px;box-shadow:none}
+  .filter-input{display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--line);padding:0 4px 14px;color:var(--cyan);font:14px 'JetBrains Mono',monospace}.filter-input input{width:100%;border:0;outline:0;color:var(--ink);background:transparent;font-family:inherit}.filter-input input::placeholder{color:var(--ink-muted)}
+  .filter-tags{display:flex;gap:7px;overflow-x:auto;padding-top:14px}.filter-tags .tag{flex:none;cursor:pointer}.filter-tags .tag[aria-pressed='true']{border-color:var(--cyan);color:var(--bg-deep);background:var(--cyan)}
+  .result-count{margin:22px 0 0;color:var(--ink-muted);font-size:10px}.archive-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:20px}.empty-state{margin-top:20px;padding:28px;color:var(--ink-muted);text-align:center;box-shadow:none}
+  @media(max-width:800px){.archive-header{align-items:start;flex-direction:column}.archive-grid{grid-template-columns:1fr}}
+</style>

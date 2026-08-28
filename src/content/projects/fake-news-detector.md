@@ -17,6 +17,7 @@ caseStudy: false
 featured: true
 homePinned: false
 date: 2026-02-23
+visualVariant: classifier-console
 ---
 
 ## Overview

@@ -17,7 +17,8 @@ const projectsCollection = defineCollection({
     featured: z.boolean().default(false),
     homePinned: z.boolean().default(false),
     date: z.coerce.date(),
-    coverImage: z.string().optional()
+    coverImage: z.string().optional(),
+    visualVariant: z.enum(['incident-timeline', 'api-monitor', 'pr-review', 'classifier-console'])
   })
 });
 

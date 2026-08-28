@@ -24,6 +24,7 @@ repoUrl: https://github.com/ArchitDewan/IncidentResponse
 featured: true
 homePinned: true
 date: 2026-08-04
+visualVariant: incident-timeline
 ---
 
 ## Overview

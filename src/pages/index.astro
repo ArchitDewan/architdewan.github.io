@@ -3,16 +3,22 @@ import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import Projects from '../components/sections/Projects.astro';
+import Skills from '../components/sections/Skills.astro';
+import Education from '../components/sections/Education.astro';
+import Contact from '../components/sections/Contact.astro';
 
 const allProjects = await getCollection('projects');
 const homeProjects = allProjects
-  .filter((project) => project.data.homePinned)
+  .filter((project) => project.data.featured)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<MainLayout title="Archit Dewan | Developer Portfolio" description="Minimal portfolio of Archit Dewan, CS & Math at McMaster University.">
-  <main>
+<MainLayout title="Archit Dewan | Developer Portfolio" description="Portfolio of Archit Dewan, a Computer Science and Mathematics student at McMaster University.">
+  <main class="content-shell">
     <Hero />
-    <Projects projects={homeProjects} heading="Selected Work" description="A quick snapshot. Explore the full archive for more projects." />
+    <Projects projects={homeProjects} />
+    <Skills />
+    <Education />
+    <Contact />
   </main>
 </MainLayout>

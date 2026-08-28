@@ -2,39 +2,22 @@
 import type { CollectionEntry } from 'astro:content';
 import ProjectCard from '../project/ProjectCard.astro';
 
-interface Props {
-  projects: CollectionEntry<'projects'>[];
-  heading?: string;
-  description?: string;
-  showAllLink?: boolean;
-  showHeader?: boolean;
-}
-
-const {
-  projects,
-  heading = 'Selected Work',
-  description = 'Each project card focuses on the problem, approach, and measurable outcome.',
-  showAllLink = true,
-  showHeader = true
-} = Astro.props;
+interface Props { projects: CollectionEntry<'projects'>[]; }
+const { projects } = Astro.props;
 ---
 
-<section id="projects" class="section-shell border-t border-[var(--line)] py-14 reveal-up">
-  {showHeader && (
-    <>
-      <p class="eyebrow">Projects</p>
-      <h2 class="section-heading mt-3">{heading}</h2>
-      <p class="mt-4 max-w-2xl text-sm text-[var(--ink-muted)]">{description}</p>
-    </>
-  )}
-
-  <div class={`${showHeader ? 'mt-10' : 'mt-2'} grid gap-6 md:grid-cols-2`}>
-    {projects.map((project) => <ProjectCard project={project} />)}
+<section id="projects" class="section-block">
+  <div class="projects-heading reveal">
+    <div><p class="section-kicker">01 / projects</p><h2 class="section-title">Featured Projects</h2></div>
+    <a class="archive-link mono" href="/projects">open project archive <span>→</span></a>
   </div>
-
-  {showAllLink && (
-    <div class="mt-8">
-      <a href="/projects" class="inline-flex rounded-full border border-[var(--line)] px-5 py-2 text-sm font-medium transition hover:border-[var(--accent)] hover:text-[var(--accent)]">View all projects</a>
-    </div>
-  )}
+  <div class="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
 </section>
+
+<style>
+  .projects-heading { display:flex; justify-content:space-between; gap:40px; align-items:end; }
+  .archive-link { display:inline-flex; gap:8px; margin-top:18px; color:var(--cyan); font-size:11px; }
+  .archive-link:hover { color:var(--ink); }
+  .project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; margin-top:44px; }
+  @media(max-width:820px){.projects-heading{align-items:start;flex-direction:column;gap:20px}.project-grid{grid-template-columns:1fr}}
+</style>

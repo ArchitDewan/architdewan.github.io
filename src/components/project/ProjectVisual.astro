@@ -1,0 +1,74 @@
+---
+interface Props {
+  variant: 'incident-timeline' | 'api-monitor' | 'pr-review' | 'classifier-console';
+}
+const { variant } = Astro.props;
+---
+
+<div class="system-visual" aria-hidden="true">
+  {variant === 'incident-timeline' && (
+    <div class="incident-layout">
+      <div class="visual-toolbar"><span>INC-0042</span></div>
+      <div class="timeline">
+        <div><i class="red"></i><span>14:02</span><strong>alert received</strong></div>
+        <div><i class="yellow"></i><span>14:03</span><strong>runbook matched</strong></div>
+        <div><i class="cyan"></i><span>14:04</span><strong>brief sent to Slack</strong></div>
+        <div><i class="green"></i><span>14:11</span><strong>timeline captured</strong></div>
+      </div>
+    </div>
+  )}
+  {variant === 'api-monitor' && (
+    <div class="monitor-layout">
+      <div class="visual-toolbar"><span>endpoint health</span></div>
+      <svg viewBox="0 0 460 150" role="presentation">
+        <path class="grid" d="M0 30H460M0 60H460M0 90H460M0 120H460M92 0V150M184 0V150M276 0V150M368 0V150" />
+        <path class="chart-glow" d="M0 112 C35 106 48 89 78 94 S126 119 158 80 S205 55 234 69 S284 105 319 74 S366 28 397 52 S430 73 460 32" />
+        <path class="chart" d="M0 112 C35 106 48 89 78 94 S126 119 158 80 S205 55 234 69 S284 105 319 74 S366 28 397 52 S430 73 460 32" />
+      </svg>
+      <div class="metric-row"><span><b>200</b> status</span><span><b>healthy</b> response</span><span><b>scheduled</b> checks</span></div>
+    </div>
+  )}
+  {variant === 'pr-review' && (
+    <div class="review-layout">
+      <div class="visual-toolbar"><span>pull_request.opened</span></div>
+      <div class="diff-line"><span>−</span><code>raw patch context</code></div>
+      <div class="diff-line added"><span>+</span><code>structured file summary</code></div>
+      <div class="flow"><span>webhook</span><i>→</i><span>verify</span><i>→</i><span>summarize</span><i>→</i><span>comment</span></div>
+      <div class="comment"><b>AI summary</b><span>Changes grouped by file and impact.</span></div>
+    </div>
+  )}
+  {variant === 'classifier-console' && (
+    <div class="classifier-layout">
+      <div class="visual-toolbar"><span>model.predict()</span></div>
+      <div class="console-line"><span>&gt;</span><code>analyze article credibility</code></div>
+      <div class="confidence"><div><span>potentially misleading</span><b>classification</b></div><div class="confidence-track"><i></i></div></div>
+      <div class="tokens"><span>text pipeline</span><span>scikit-learn</span><span>confidence output</span></div>
+    </div>
+  )}
+</div>
+
+<style>
+  .system-visual { min-height: 244px; overflow: hidden; border-bottom: 1px solid var(--line); color: var(--ink-muted); background: radial-gradient(circle at 100% 0, rgba(129,162,190,.12), transparent 48%), var(--bg-deep); font: 11px/1.5 'JetBrains Mono', monospace; }
+  .visual-toolbar { display:flex; height:38px; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding:0 14px; color:var(--ink-soft); background:rgba(44,49,58,.72); }
+  .timeline { position:relative; display:grid; gap:18px; padding:24px 22px; }
+  .timeline::before { content:''; position:absolute; top:30px; bottom:30px; left:28px; width:1px; background:var(--line-strong); }
+  .timeline div { position:relative; display:grid; grid-template-columns:12px 48px 1fr; align-items:center; gap:10px; }
+  .timeline i { z-index:1; width:7px; height:7px; border-radius:2px; background:var(--cyan); box-shadow:0 0 8px currentColor; }
+  .timeline i.red{color:var(--red);background:var(--red)} .timeline i.yellow{color:var(--yellow);background:var(--yellow)} .timeline i.cyan{color:var(--cyan);background:var(--cyan)} .timeline i.green{color:var(--green);background:var(--green)}
+  .timeline strong { color:var(--ink-soft); font-weight:500; }
+  .monitor-layout svg { display:block; width:100%; height:150px; padding:14px 0 0; }
+  .grid { fill:none; stroke:var(--line); stroke-width:1; opacity:.7; }
+  .chart,.chart-glow { fill:none; stroke:var(--cyan); stroke-width:2.5; }
+  .chart-glow { stroke-width:9; opacity:.12; }
+  .metric-row { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+  .metric-row span { display:flex; flex-direction:column; padding:10px 12px; border-right:1px solid var(--line); font-size:9px; }
+  .metric-row span:last-child{border:0}.metric-row b{color:var(--green);font-size:11px;font-weight:500}
+  .review-layout,.classifier-layout{min-height:244px}.diff-line{display:flex;gap:10px;padding:8px 16px;color:var(--red);background:rgba(204,102,102,.06)}
+  .diff-line.added{color:var(--green);background:rgba(181,189,104,.06)}.diff-line code{color:var(--ink-muted)}
+  .flow{display:flex;align-items:center;justify-content:center;gap:8px;padding:24px 12px}.flow span{border:1px solid var(--line);border-radius:4px;padding:7px 8px;color:var(--ink-soft);background:var(--surface)}.flow i{color:var(--cyan);font-style:normal}
+  .comment{display:flex;flex-direction:column;gap:4px;margin:0 16px;border-left:2px solid var(--cyan);padding:10px 12px;background:rgba(138,190,183,.06)}.comment b{color:var(--cyan);font-weight:500}
+  .console-line{display:flex;gap:10px;margin:20px 16px 14px;border:1px solid var(--line);border-radius:5px;padding:10px 12px;color:var(--cyan);background:#181b20}.console-line code{color:var(--ink-soft)}
+  .confidence{margin:0 16px 18px}.confidence>div:first-child{display:flex;justify-content:space-between;margin-bottom:8px}.confidence b{color:var(--yellow);font-weight:500}.confidence-track{height:8px;border-radius:2px;background:var(--surface-raised)}.confidence-track i{display:block;width:72%;height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(138,190,183,.3)}
+  .tokens{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px}.tokens span{border:1px solid var(--line);border-radius:4px;padding:5px 8px;color:var(--ink-muted)}
+  @media(max-width:520px){.flow{gap:4px}.flow span{padding:6px 5px;font-size:9px}.system-visual{min-height:226px}.metric-row span{padding-inline:7px}}
+</style>

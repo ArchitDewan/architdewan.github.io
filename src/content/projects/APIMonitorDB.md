@@ -23,6 +23,7 @@ liveUrl: https://monitor.architdewan.dev
 featured: true
 homePinned: true
 date: 2026-6-16
+visualVariant: api-monitor
 ---
 
 ## Overview
