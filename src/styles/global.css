@@ -32,7 +32,12 @@ button,a{-webkit-tap-highlight-color:transparent}
 .workspace-content{padding:0 100px}
 .content-shell{width:min(100%,1000px);margin:auto}
 .social-rail{position:fixed;left:36px;bottom:0;display:flex;flex-direction:column;align-items:center;gap:25px;font:12px 'JetBrains Mono',monospace;color:var(--ink-muted)}
-.social-rail a{writing-mode:vertical-rl}
+.social-rail a{display:grid;place-items:center;width:44px;height:44px;color:var(--ink-soft);transition:color .2s,transform .2s}
+.social-rail a:hover{color:var(--accent);transform:translateY(-3px)}
+.social-rail svg,.social-icon{display:block;width:24px;height:24px}
+.social-icon{background:currentColor;mask:var(--social-mask) center/contain no-repeat;-webkit-mask:var(--social-mask) center/contain no-repeat}
+.github-icon{--social-mask:url(/icons/github.svg)}
+.linkedin-icon{--social-mask:url(/icons/linkedin.svg)}
 .social-rail:after{content:'';width:1px;height:100px;background:var(--line-strong)}
 
 .hero{min-height:calc(100svh - 100px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:65px 0 100px}
@@ -207,4 +212,15 @@ button,a{-webkit-tap-highlight-color:transparent}
 @media (min-width: 761px) and (max-width: 1100px), (max-width: 540px) {
   .technology-badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .technology-badges li { gap: 9px; padding: 12px 10px; font-size: 14px; }
+}
+
+.about-grid.without-portrait { grid-template-columns: minmax(0, 760px); }
+.featured-projects .project-preview.has-cover img { aspect-ratio: auto; background: transparent; }
+.featured-projects .project-card:has(.has-cover) { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: start; }
+.featured-projects .project-card:has(.has-cover) .project-body { padding-top: 38%; }
+.featured-projects .project-card:has(.has-cover) .project-preview { grid-column: 1 / 9; }
+.featured-projects .project-card:nth-child(even):has(.has-cover) .project-preview { grid-column: 5 / 13; }
+@media(max-width:760px) {
+ .featured-projects .project-card:has(.has-cover) .project-body { padding-top: 24px; }
+ .featured-projects .project-card:has(.has-cover) { align-items: stretch; }
 }

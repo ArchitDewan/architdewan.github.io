@@ -13,7 +13,6 @@ const projectsCollection = defineCollection({
     outcome: z.string().min(20).max(220),
     repoUrl: z.string().url(),
     liveUrl: z.string().url().optional(),
-    caseStudy: z.boolean().default(true),
     featured: z.boolean().default(false),
     homePinned: z.boolean().default(false),
     date: z.coerce.date(),

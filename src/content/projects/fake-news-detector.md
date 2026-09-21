@@ -13,7 +13,6 @@ approach: Trained and evaluated a text classification pipeline, exposed predicti
 outcome: Enabled fast credibility checks with clear model confidence indicators, reducing manual verification time for users.
 repoUrl: https://github.com/ArchitDewan/fake-news-detector
 
-caseStudy: false
 featured: false
 homePinned: false
 date: 2026-02-23

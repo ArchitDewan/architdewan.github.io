@@ -16,7 +16,6 @@ problem: Reviewers often need quick context on large pull requests, but reading 
 approach: Built a FastAPI GitHub App that verifies webhook signatures, fetches PR file diffs with installation tokens, summarizes each patch with OpenAI, and posts one consolidated comment on the PR.
 outcome: Delivers automatic per-file PR summaries on open, sync, and reopen events so reviewers can start with structured context instead of reading raw diffs first.
 repoUrl: https://github.com/ArchitDewan/GitPRSummarizer
-caseStudy: false
 featured: false
 homePinned: false
 date: 2026-08-13

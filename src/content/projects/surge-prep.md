@@ -8,6 +8,7 @@ problem: Hands-on surgical practice benefits from accessible tools that capture 
 approach: Mapped OpenCV tool poses into Unity, integrated ESP32 force readings, and built a FastAPI and MongoDB backend for session telemetry, replay, and scoring.
 outcome: Built and presented a prototype using a USB webcam and 3D-printed tool, with feedback on tool-path accuracy and pressure control.
 repoUrl: https://github.com/mtorregrosadev/HTN-Surgery
+coverImage: /projects/surge-prep.png
 featured: true
 date: 2026-09-20
 visualVariant: surgical-training

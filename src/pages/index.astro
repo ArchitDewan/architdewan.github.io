@@ -4,7 +4,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import Projects from '../components/sections/Projects.astro';
 import Skills from '../components/sections/Skills.astro';
-import Education from '../components/sections/Education.astro';
 import Contact from '../components/sections/Contact.astro';
 const portraits = import.meta.glob('/public/portrait.{jpg,jpeg,png,webp}');
 const portrait = Object.keys(portraits)[0]?.replace('/public', '');
@@ -15,18 +14,15 @@ const homeProjects = (await getCollection('projects')).filter(p => p.data.featur
 <Hero />
 <section id="about" class="section-block about">
   <h2 class="numbered-heading">About Me</h2>
-  <div class="about-grid">
+  <div class:list={["about-grid", { "without-portrait": !portrait }]}>
     <div class="about-copy">
       <p>Hi there!</p>
-      <p>I'm Archit Dewan, a Computer Science and Mathematics student at <a class="text-link" href="#education">McMaster University</a>. I enjoy building backend systems, developer tools, and software that makes complex workflows easier to manage.</p>
+      <p>I'm Archit Dewan, a Computer Science and Mathematics student at <a class="text-link" href="https://www.mcmaster.ca/">McMaster University</a>. I enjoy building backend systems, developer tools, and software that makes complex workflows easier to manage.</p>
       <p>Recently, I've been contributing to <a class="text-link" href="https://github.com/traefik/traefik/pulls?q=is%3Apr+author%3AArchitDewan" target="_blank" rel="noreferrer">Traefik</a>, working on sticky sessions and request-path matching in its Kubernetes ingress provider. My projects span API reliability, incident response, and automation, primarily using Go, Python, and PostgreSQL.</p>
-      <p>I also like taking software beyond the screen. At Hack the North, I helped build <a class="text-link" href="/projects/surge-prep/">Surge Prep</a>, a surgical-training prototype combining computer vision, a physical tool, and a Unity simulation.</p>
+      <p>I also like taking software beyond the screen. At Hack the North, I helped build <a class="text-link" href="https://github.com/mtorregrosadev/HTN-Surgery">Surge Prep</a>, a surgical-training prototype combining computer vision, a physical tool, and a Unity simulation.</p>
       <Skills />
     </div>
-    <div class="about-aside">
-      {portrait && <figure class="portrait-frame"><img src={portrait} alt="Archit Dewan" width="800" height="800" loading="lazy" /></figure>}
-      <Education />
-    </div>
+    {portrait && <div class="about-aside"><figure class="portrait-frame"><img src={portrait} alt="Archit Dewan" width="800" height="800" loading="lazy" /></figure></div>}
   </div>
 </section>
 <section id="experience" class="section-block"><h2 class="numbered-heading">Open source</h2><div class="experience-grid"><div class="experience-label mono">Traefik</div><div><h3>Open Source Contributor <span class="accent">@ Traefik</span></h3><p class="mono muted">Kubernetes · Go · Ingress</p><ul class="contributions"><li>Implemented adaptive sticky-session cookie handling across three load-balancing strategies, with compatibility tests for legacy browsers.</li><li>Fixed ingress-nginx path matching for the NGINX prefix modifier, added regression tests, and documented supported behavior.</li></ul><a class="text-link" href="https://github.com/traefik/traefik/pulls?q=is%3Apr+author%3AArchitDewan" target="_blank" rel="noreferrer">View contributions ↗</a></div></div></section>

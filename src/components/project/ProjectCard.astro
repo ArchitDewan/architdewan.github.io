@@ -4,21 +4,20 @@ import ProjectVisual from './ProjectVisual.astro';
 
 interface Props { project: CollectionEntry<'projects'>; index?: number; }
 const { project, index = 0 } = Astro.props;
-const { data, slug } = project;
-const primaryHref = data.caseStudy ? `/projects/${slug}/` : data.repoUrl;
+const { data } = project;
+const primaryHref = data.liveUrl ?? data.repoUrl;
 ---
 
 <article class="project-card reveal" data-project-card data-stack={data.stack.join(' ').toLowerCase()} style={`--delay:${index * 70}ms`}>
-  <a class:list={['project-preview', { 'has-cover': data.coverImage }]} href={primaryHref} target={!data.caseStudy ? '_blank' : undefined} rel={!data.caseStudy ? 'noreferrer' : undefined} aria-label={`View ${data.title}`}>
+  <a class:list={['project-preview', { 'has-cover': data.coverImage }]} href={primaryHref} target="_blank" rel="noreferrer" aria-label={`View ${data.title}`}>
     {data.coverImage ? <img src={data.coverImage} alt={`${data.title} project screenshot`} loading="lazy" width="1200" height="900" /> : <ProjectVisual variant={data.visualVariant} />}
   </a>
   <div class="project-body">
     <div class="project-meta mono"><span>Project</span><span>{data.date.getFullYear()}</span></div>
-    <h3><a href={primaryHref} target={!data.caseStudy ? '_blank' : undefined} rel={!data.caseStudy ? 'noreferrer' : undefined}>{data.title}</a></h3>
+    <h3><a href={primaryHref} target="_blank" rel="noreferrer">{data.title}</a></h3>
     <p>{data.summary}</p>
     <div class="project-tags">{data.stack.slice(0, 5).map((item) => <span class="tag">{item}</span>)}</div>
     <div class="project-links mono">
-      {data.caseStudy && <a href={`/projects/${slug}/`}>case study <span>↗</span></a>}
       <a href={data.repoUrl} target="_blank" rel="noreferrer">repository <span>↗</span></a>
       {data.liveUrl && <a href={data.liveUrl} target="_blank" rel="noreferrer">live demo <span>↗</span></a>}
     </div>

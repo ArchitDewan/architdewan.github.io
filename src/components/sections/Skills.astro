@@ -2,9 +2,8 @@
 const skills = [
   { name: 'Go', icon: 'go' },
   { name: 'PostgreSQL', icon: 'postgresql' },
-  { name: 'Java', icon: 'java' },
   { name: 'Python', icon: 'python' },
-  { name: 'Unity', icon: 'unity' },
+  { name: 'Git', icon: 'git' },
   { name: 'Docker', icon: 'docker' },
 ];
 ---
@@ -13,5 +12,4 @@ const skills = [
   <ul class="technology-badges">
     {skills.map(skill => <li><img src={`/icons/${skill.icon}.svg`} alt="" width="32" height="32" loading="lazy" /><span>{skill.name}</span></li>)}
   </ul>
-  <details class="more-skills"><summary>More technologies</summary><p>SQL, C#, HTML/CSS, Bash, SQLite, SQLAlchemy, Git, GitHub Actions, Oracle Cloud, Unix/Linux, REST APIs, Webhooks, and Postman.</p></details>
 </div>

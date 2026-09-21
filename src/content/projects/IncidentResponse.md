@@ -21,6 +21,7 @@ problem: Teams need a reliable way to turn raw production alerts into actionable
 approach: Built a Dockerized workflow with a Go API for alert ingestion, incident grouping, runbook matching, Slack updates, and resolution, plus a Python worker for postmortem drafts.
 outcome: Demoable outage response flow where users trigger a mock alert, review timeline, resolve the incident, run the postmortem worker, and view the draft in a dashboard.
 repoUrl: https://github.com/ArchitDewan/IncidentResponse
+coverImage: /projects/incident-response.png
 featured: true
 homePinned: true
 date: 2026-08-04
