@@ -173,3 +173,38 @@ button,a{-webkit-tap-highlight-color:transparent}
 *,*:before,*:after{animation:none!important;transition:none!important}
 }
 
+
+/* Portrait and image-led project layouts. */
+.about .numbered-heading::after { max-width: none; }
+.about-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 60px; align-items: start; }
+.about-copy > p { margin-bottom: 22px; }
+.about-aside { min-width: 0; }
+.portrait-frame { position: relative; margin: 0 14px 42px 0; isolation: isolate; }
+.portrait-frame::after { content: ''; position: absolute; inset: 15px -15px -15px 15px; border: 2px solid var(--accent); border-radius: 4px; z-index: -1; }
+.portrait-frame img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+.technology-badges { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; list-style: none; padding: 0; margin: 28px 0 18px; }
+.technology-badges li { border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 10px; text-align: center; color: var(--ink-soft); font-size: 16px; }
+.more-skills { color: var(--ink-muted); font-size: 14px; }
+.more-skills summary { cursor: pointer; color: var(--accent); }
+.more-skills p { margin-top: 12px; }
+.featured-projects .project-card { border: 0; border-radius: 0; overflow: visible; background: transparent; }
+.featured-projects .project-preview.has-cover { padding: 0; min-height: 0; border: 0; background: transparent; }
+.project-preview.has-cover img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.featured-projects .project-preview.has-cover img { aspect-ratio: 1; object-fit: contain; background: var(--surface-raised); }
+.featured-projects .project-body > p { box-shadow: 0 10px 30px rgba(28, 35, 51, .09); }
+.case-cover { display: block; width: 100%; height: auto; }
+@media (max-width: 760px) {
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .portrait-frame { max-width: 380px; margin-inline: auto; margin-right: 15px; }
+  .technology-badges { gap: 10px; }
+  .technology-badges li { font-size: 14px; padding: 12px 6px; }
+  .featured-projects .project-body > p { box-shadow: none; }
+}
+
+.technology-badges { grid-template-columns: repeat(3, max-content); justify-content: center; gap: 16px; }
+.technology-badges li { display: flex; align-items: center; justify-content: flex-start; gap: 14px; padding: 13px 18px; border-radius: 14px; font-size: 17px; }
+.technology-badges img { width: 30px; height: 30px; flex: none; object-fit: contain; }
+@media (min-width: 761px) and (max-width: 1100px), (max-width: 540px) {
+  .technology-badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-badges li { gap: 9px; padding: 12px 10px; font-size: 14px; }
+}

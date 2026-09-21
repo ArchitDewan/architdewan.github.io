@@ -1,4 +1,17 @@
 ---
-const groups = [{title:'Languages',items:'Go, Python, Java, SQL, C#, HTML/CSS, Bash'},{title:'Data & infrastructure',items:'PostgreSQL, SQLite, SQLAlchemy, Docker, Oracle Cloud, Unix/Linux'},{title:'Tools & workflows',items:'Git, GitHub Actions, REST APIs, Webhooks, Unity, Postman'}];
+const skills = [
+  { name: 'Go', icon: 'go' },
+  { name: 'PostgreSQL', icon: 'postgresql' },
+  { name: 'Java', icon: 'java' },
+  { name: 'Python', icon: 'python' },
+  { name: 'Unity', icon: 'unity' },
+  { name: 'Docker', icon: 'docker' },
+];
 ---
-<div id="skills" class="skills"><h3>A few technologies I work with</h3><div class="skills-grid">{groups.map(group => <div><h4 class="mono">{group.title}</h4><p>{group.items}</p></div>)}</div></div>
+<div id="skills" class="skills">
+  <p>Here are a few of the technologies I use to build projects:</p>
+  <ul class="technology-badges">
+    {skills.map(skill => <li><img src={`/icons/${skill.icon}.svg`} alt="" width="32" height="32" loading="lazy" /><span>{skill.name}</span></li>)}
+  </ul>
+  <details class="more-skills"><summary>More technologies</summary><p>SQL, C#, HTML/CSS, Bash, SQLite, SQLAlchemy, Git, GitHub Actions, Oracle Cloud, Unix/Linux, REST APIs, Webhooks, and Postman.</p></details>
+</div>

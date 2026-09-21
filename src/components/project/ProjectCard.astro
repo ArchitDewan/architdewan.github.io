@@ -8,10 +8,12 @@ const { data, slug } = project;
 const primaryHref = data.caseStudy ? `/projects/${slug}/` : data.repoUrl;
 ---
 
-<article class="project-card panel reveal" data-project-card data-stack={data.stack.join(' ').toLowerCase()} style={`--delay:${index * 70}ms`}>
-  <div class="project-preview"><ProjectVisual variant={data.visualVariant} /></div>
+<article class="project-card reveal" data-project-card data-stack={data.stack.join(' ').toLowerCase()} style={`--delay:${index * 70}ms`}>
+  <a class:list={['project-preview', { 'has-cover': data.coverImage }]} href={primaryHref} target={!data.caseStudy ? '_blank' : undefined} rel={!data.caseStudy ? 'noreferrer' : undefined} aria-label={`View ${data.title}`}>
+    {data.coverImage ? <img src={data.coverImage} alt={`${data.title} project screenshot`} loading="lazy" width="1200" height="900" /> : <ProjectVisual variant={data.visualVariant} />}
+  </a>
   <div class="project-body">
-    <div class="project-meta mono"><span>Featured project</span><span>{data.date.getFullYear()}</span></div>
+    <div class="project-meta mono"><span>Project</span><span>{data.date.getFullYear()}</span></div>
     <h3><a href={primaryHref} target={!data.caseStudy ? '_blank' : undefined} rel={!data.caseStudy ? 'noreferrer' : undefined}>{data.title}</a></h3>
     <p>{data.summary}</p>
     <div class="project-tags">{data.stack.slice(0, 5).map((item) => <span class="tag">{item}</span>)}</div>

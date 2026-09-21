@@ -6,10 +6,10 @@ const { title, description } = Astro.props;
 const year = new Date().getFullYear();
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
 const navItems = [
-  { id: 'about', label: 'About', glyph: '01.' },
-  { id: 'experience', label: 'Open source', glyph: '02.' },
-  { id: 'projects', label: 'Projects', glyph: '03.' },
-  { id: 'contact', label: 'Contact', glyph: '04.' }
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Open source' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' }
 ];
 ---
 
@@ -37,7 +37,7 @@ const navItems = [
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="topbar">
       <a class="brand-mark" href="/" aria-label="Archit Dewan home">AD<span>.</span></a>
-      <nav aria-label="Primary navigation">{navItems.map(item => <a href={`/#${item.id}`}><span>{item.glyph}</span> {item.label}</a>)}<a class="button" href="/resume.pdf" target="_blank" rel="noreferrer">Resume ↗</a></nav>
+      <nav aria-label="Primary navigation">{navItems.map(item => <a href={`/#${item.id}`}>{item.label}</a>)}<a class="button" href="/resume.pdf" target="_blank" rel="noreferrer">Resume ↗</a></nav>
     </header>
     <aside class="social-rail" aria-label="Social links"><a href="https://github.com/ArchitDewan" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/architdewan/" target="_blank" rel="noreferrer">LinkedIn ↗</a></aside>
     <div class="workspace-content" id="main-content"><slot /></div>

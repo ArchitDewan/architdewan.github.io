@@ -4,4 +4,4 @@ import ProjectCard from '../project/ProjectCard.astro';
 interface Props { projects: CollectionEntry<'projects'>[]; }
 const { projects } = Astro.props;
 ---
-<section id="projects" class="section-block"><h2 class="numbered-heading"><span>03.</span> Some things I've built</h2><div class="featured-projects">{projects.map((project,index) => <ProjectCard project={project} index={index} />)}</div><div class="archive-cta"><a class="text-link mono" href="/projects">View the project archive ↗</a></div></section>
+<section id="projects" class="section-block"><h2 class="numbered-heading">Some things I've built</h2><div class="featured-projects">{projects.map((project,index) => <ProjectCard project={project} index={index} />)}</div><div class="archive-cta"><a class="text-link mono" href="/projects">View the project archive ↗</a></div></section>
