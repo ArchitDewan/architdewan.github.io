@@ -5,8 +5,7 @@ import Hero from '../components/sections/Hero.astro';
 import Projects from '../components/sections/Projects.astro';
 import Skills from '../components/sections/Skills.astro';
 import Contact from '../components/sections/Contact.astro';
-const portraits = import.meta.glob('/public/portrait.{jpg,jpeg,png,webp}');
-const portrait = Object.keys(portraits)[0]?.replace('/public', '');
+const portrait = '/portrait.png';
 const homeProjects = (await getCollection('projects')).filter(p => p.data.featured).sort((a,b) => b.data.date.getTime()-a.data.date.getTime());
 ---
 <MainLayout title="Archit Dewan | Software Developer" description="Computer Science and Mathematics student at McMaster University building backend systems, developer tools, and open-source software.">
