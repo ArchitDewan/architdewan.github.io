@@ -17,7 +17,7 @@ approach: Built a FastAPI GitHub App that verifies webhook signatures, fetches P
 outcome: Delivers automatic per-file PR summaries on open, sync, and reopen events so reviewers can start with structured context instead of reading raw diffs first.
 repoUrl: https://github.com/ArchitDewan/GitPRSummarizer
 caseStudy: false
-featured: true
+featured: false
 homePinned: false
 date: 2026-08-13
 visualVariant: pr-review

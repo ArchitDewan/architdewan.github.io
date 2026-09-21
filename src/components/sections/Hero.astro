@@ -1,47 +1,7 @@
-<section id="home" class="hero section-block">
-  <div class="hero-grid">
-    <div class="hero-copy reveal is-visible">
-      <h1>Archit<br /><span>Dewan</span></h1>
-      <p class="hero-lede">Computer Science &amp; Math student at McMaster University.</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="#projects">View projects <span aria-hidden="true">↓</span></a>
-        <button class="button" type="button" data-command-open>Open command palette <kbd>⌘K</kbd></button>
-      </div>
-    </div>
-
-    <div class="terminal panel reveal is-visible">
-      <div class="panel-header"><span class="panel-tab session-tab">session.log</span><span>read only</span></div>
-      <div class="terminal-body mono">
-        <div class="terminal-line"><span class="prompt">archit@portfolio ~ %</span><span>whoami</span></div>
-        <div class="terminal-output"><span class="key">name</span><span>Archit Dewan</span></div>
-        <div class="terminal-output"><span class="key">degree</span><span>Honours BSc · Computer Science &amp; Math</span></div>
-        <div class="terminal-output"><span class="key">grad</span><span>2028</span></div>
-        <div class="terminal-line terminal-last"><span class="prompt">archit@portfolio ~ %</span><span class="caret" aria-hidden="true"></span></div>
-      </div>
-      <div class="terminal-footer mono"><span class="status-online">ready</span><span>utf-8 · zsh</span></div>
-    </div>
-  </div>
+<section id="home" class="hero">
+  <p class="greeting mono">Hey, I'm</p>
+  <h1>Archit Dewan<span>Software Developer.</span></h1>
+  <p class="hero-lede">Computer Science &amp; Mathematics student at <a href="#education">McMaster University</a>. I build backend systems, developer tools, and software that makes complex workflows easier to manage.</p>
+  <div class="hero-socials"><a href="https://github.com/ArchitDewan" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/architdewan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:architdewan2006@gmail.com">Email ↗</a></div>
+  <a class="button" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
 </section>
-
-<style>
-  .hero { display:grid; min-height:min(680px,calc(100svh - 100px)); align-items:center; padding-top:34px; }
-  .hero-grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr); align-items:center; gap:clamp(40px,7vw,88px); }
-  .hero-grid > * { min-width:0; }
-  h1 { margin:22px 0 0; font:600 clamp(64px,9vw,124px)/.78 'Space Grotesk',sans-serif; letter-spacing:-.07em; }
-  h1 span { color:var(--cyan); }
-  .hero-lede { max-width:570px; margin:30px 0 0; color:var(--ink-muted); font-size:clamp(16px,2vw,20px); line-height:1.65; }
-  .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
-  kbd { color:var(--ink-muted); font-size:9px; }
-  .terminal { transform:rotate(1deg); }
-  .terminal-body { min-height:258px; padding:28px 24px; color:var(--ink-soft); background:radial-gradient(circle at 80% 0,rgba(138,190,183,.08),transparent 55%),#181b20; font-size:12px; }
-  .terminal-line { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
-  .prompt,.key { color:var(--cyan); }
-  .terminal-output { display:grid; grid-template-columns:70px minmax(0,1fr); gap:18px; margin:12px 0; }
-  .terminal-output span:last-child { overflow-wrap:anywhere; }
-  .terminal-last { margin-top:32px; margin-bottom:0; }
-  .caret { width:8px; height:16px; background:var(--cyan); animation:blink 1s steps(1) infinite; }
-  .terminal-footer { display:flex; justify-content:space-between; border-top:1px solid var(--line); padding:7px 13px; color:var(--ink-muted); background:var(--surface-raised); font-size:9px; }
-  @keyframes blink { 50% { opacity:0; } }
-  @media(max-width:900px){.hero{min-height:auto}.hero-grid{width:100%;max-width:100%;grid-template-columns:minmax(0,1fr)}.terminal{width:100%;max-width:100%;transform:none}.hero-copy{padding-top:22px}.hero-lede{overflow-wrap:anywhere}}
-  @media(max-width:520px){h1{font-size:clamp(58px,22vw,86px)}.hero-actions{flex-direction:column;align-items:stretch}.terminal-body{padding:22px 16px;font-size:10px}.terminal-output{grid-template-columns:58px 1fr}}
-</style>

@@ -14,7 +14,7 @@ outcome: Enabled fast credibility checks with clear model confidence indicators,
 repoUrl: https://github.com/ArchitDewan/fake-news-detector
 
 caseStudy: false
-featured: true
+featured: false
 homePinned: false
 date: 2026-02-23
 visualVariant: classifier-console

@@ -1,11 +1,12 @@
 ---
 interface Props {
-  variant: 'incident-timeline' | 'api-monitor' | 'pr-review' | 'classifier-console';
+  variant: 'incident-timeline' | 'api-monitor' | 'pr-review' | 'classifier-console' | 'surgical-training';
 }
 const { variant } = Astro.props;
 ---
 
 <div class="system-visual" aria-hidden="true">
+  {variant === 'surgical-training' && (<div class="review-layout"><div class="visual-toolbar"><span>Surge Prep / session pipeline</span></div><div class="flow"><span>Webcam</span><i>→</i><span>OpenCV</span><i>→</i><span>Unity</span></div><div class="comment"><b>Movement + pressure</b><span>Tool-pose tracking · ESP32 force sensing</span></div><div class="flow"><span>Telemetry</span><i>→</i><span>Replay</span><i>→</i><span>Scoring</span></div></div>)}
   {variant === 'incident-timeline' && (
     <div class="incident-layout">
       <div class="visual-toolbar"><span>INC-0042</span></div>
@@ -48,8 +49,8 @@ const { variant } = Astro.props;
 </div>
 
 <style>
-  .system-visual { min-height: 244px; overflow: hidden; border-bottom: 1px solid var(--line); color: var(--ink-muted); background: radial-gradient(circle at 100% 0, rgba(129,162,190,.12), transparent 48%), var(--bg-deep); font: 11px/1.5 'JetBrains Mono', monospace; }
-  .visual-toolbar { display:flex; height:38px; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding:0 14px; color:var(--ink-soft); background:rgba(44,49,58,.72); }
+  .system-visual { min-height: 244px; overflow: hidden; border-bottom: 1px solid var(--line); color: var(--ink-muted); background: radial-gradient(circle at 100% 0, rgba(129,162,190,.12), transparent 48%), var(--bg-deep); font: 12px/1.5 'JetBrains Mono', monospace; }
+  .visual-toolbar { display:flex; height:38px; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding:0 14px; color:var(--ink-soft); background:var(--surface-raised); }
   .timeline { position:relative; display:grid; gap:18px; padding:24px 22px; }
   .timeline::before { content:''; position:absolute; top:30px; bottom:30px; left:28px; width:1px; background:var(--line-strong); }
   .timeline div { position:relative; display:grid; grid-template-columns:12px 48px 1fr; align-items:center; gap:10px; }
@@ -67,7 +68,7 @@ const { variant } = Astro.props;
   .diff-line.added{color:var(--green);background:rgba(181,189,104,.06)}.diff-line code{color:var(--ink-muted)}
   .flow{display:flex;align-items:center;justify-content:center;gap:8px;padding:24px 12px}.flow span{border:1px solid var(--line);border-radius:4px;padding:7px 8px;color:var(--ink-soft);background:var(--surface)}.flow i{color:var(--cyan);font-style:normal}
   .comment{display:flex;flex-direction:column;gap:4px;margin:0 16px;border-left:2px solid var(--cyan);padding:10px 12px;background:rgba(138,190,183,.06)}.comment b{color:var(--cyan);font-weight:500}
-  .console-line{display:flex;gap:10px;margin:20px 16px 14px;border:1px solid var(--line);border-radius:5px;padding:10px 12px;color:var(--cyan);background:#181b20}.console-line code{color:var(--ink-soft)}
+  .console-line{display:flex;gap:10px;margin:20px 16px 14px;border:1px solid var(--line);border-radius:5px;padding:10px 12px;color:var(--cyan);background:var(--surface)}.console-line code{color:var(--ink-soft)}
   .confidence{margin:0 16px 18px}.confidence>div:first-child{display:flex;justify-content:space-between;margin-bottom:8px}.confidence b{color:var(--yellow);font-weight:500}.confidence-track{height:8px;border-radius:2px;background:var(--surface-raised)}.confidence-track i{display:block;width:72%;height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(138,190,183,.3)}
   .tokens{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px}.tokens span{border:1px solid var(--line);border-radius:4px;padding:5px 8px;color:var(--ink-muted)}
   @media(max-width:520px){.flow{gap:4px}.flow span{padding:6px 5px;font-size:9px}.system-visual{min-height:226px}.metric-row span{padding-inline:7px}}
