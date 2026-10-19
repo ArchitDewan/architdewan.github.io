@@ -63,6 +63,7 @@ button,a{-webkit-tap-highlight-color:transparent}
 .skills h4{font-size:13px;color:var(--accent);font-weight:400}
 .skills p{font-size:15px;color:var(--ink-muted)}
 .experience-grid{display:grid;grid-template-columns:180px 1fr;gap:30px}
+.experience-grid + .experience-grid{margin-top:56px}
 .experience-label{border-left:2px solid var(--accent);padding:12px 22px;color:var(--accent);align-self:start;background:var(--bg-deep);font-size:14px}
 .experience-grid h3{font-size:21px;margin:0}
 .experience-grid .mono{font-size:13px}
