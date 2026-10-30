@@ -27,3 +27,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Cohere logo
+
+The Cohere logo is sourced from https://cohere.com/logo.svg and used to identify the organization associated with the Cohere Labs Open Science Community experience. The logo remains the property of its respective owner.
