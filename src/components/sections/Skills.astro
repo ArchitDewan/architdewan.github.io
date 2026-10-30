@@ -10,6 +10,6 @@ const skills = [
 <div id="skills" class="skills">
   <p>Here are a few of the technologies I use to build projects:</p>
   <ul class="technology-badges">
-    {skills.map(skill => <li><img src={`/icons/${skill.icon}.svg`} alt="" width="32" height="32" loading="lazy" /><span>{skill.name}</span></li>)}
+    {skills.map(skill => <li><img src={`/icons/${skill.icon}.svg`} alt="" width="32" height="32" decoding="async" /><span>{skill.name}</span></li>)}
   </ul>
 </div>

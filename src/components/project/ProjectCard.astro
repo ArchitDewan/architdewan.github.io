@@ -10,7 +10,7 @@ const primaryHref = data.liveUrl ?? data.repoUrl;
 
 <article class="project-card reveal" data-project-card data-stack={data.stack.join(' ').toLowerCase()} style={`--delay:${index * 70}ms`}>
   <a class:list={['project-preview', { 'has-cover': data.coverImage }]} href={primaryHref} target="_blank" rel="noreferrer" aria-label={`View ${data.title}`}>
-    {data.coverImage ? <img src={data.coverImage} alt={`${data.title} project screenshot`} loading="lazy" width="1200" height="900" /> : <ProjectVisual variant={data.visualVariant} />}
+    {data.coverImage ? <img src={data.coverImage} srcset={`${data.coverImage.replace("-1200.webp", "-640.webp")} 640w, ${data.coverImage} 1200w`} sizes="(max-width: 760px) calc(100vw - 86px), 640px" decoding="async" alt={`${data.title} project screenshot`} loading="lazy" width="1200" height="900" /> : <ProjectVisual variant={data.visualVariant} />}
   </a>
   <div class="project-body">
     <div class="project-meta mono"><span>Project</span><span>{data.date.getFullYear()}</span></div>

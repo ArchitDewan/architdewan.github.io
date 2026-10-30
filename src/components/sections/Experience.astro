@@ -1,0 +1,50 @@
+<section id="experience" class="section-block" aria-labelledby="experience-heading">
+  <h2 id="experience-heading" class="numbered-heading">Experience</h2>
+  <article class="research-role">
+    <div class="research-logo">
+      <img src="/cohere.svg" alt="Cohere logo" width="118" height="20" decoding="async" />
+    </div>
+    <div class="research-details">
+      <div class="research-header">
+        <a class="research-organization text-link" href="https://cohere.com/research">Cohere Labs <span aria-hidden="true">↗</span></a>
+        <p class="research-date mono"><time datetime="2026-10">October 2026</time> – Present</p>
+      </div>
+      <h3>Machine Learning Research</h3>
+      <p class="research-community">Open Science Community</p>
+      <p class="research-description">Member of the Cohere Labs Open Science Community, exploring open machine learning research through research discussions, collaboration, and open-source initiatives across ML, NLP, and AI systems.</p>
+    </div>
+  </article>
+</section>
+
+<style>
+  .research-role {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+    padding: 36px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+  }
+  .research-logo {
+    padding: 20px 15px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+  }
+  .research-logo img { display: block; width: 100%; height: auto; }
+  .research-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
+  .research-organization { font-size: 16px; font-weight: 600; }
+  .research-date { margin: 0; font-size: 12px; color: var(--ink-muted); }
+  h3 { margin: 12px 0 4px; font-size: 24px; font-weight: 600; line-height: 1.4; letter-spacing: -.025em; }
+  .research-community { margin: 0; color: var(--ink-muted); font-size: 14px; }
+  .research-description { max-width: 660px; margin: 24px 0 0; color: var(--ink-muted); line-height: 1.85; }
+  @media (max-width: 760px) {
+    .research-role { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+    .research-logo { width: 150px; padding: 20px 15px; }
+    .research-header { align-items: flex-start; flex-direction: column; gap: 8px; }
+    h3 { font-size: 22px; }
+    .research-description { margin-top: 20px; }
+  }
+</style>
